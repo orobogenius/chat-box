@@ -17,7 +17,7 @@ class Model
   **/
   public function __construct()
   {
-    $this->connection = new Connection("localhost", "chatdb", "root", "this.mysql");
+    $this->connection = new Connection("localhost", "chatdb", "root", "");
     $this->dbh = $this->connection->connect();
   }
 
