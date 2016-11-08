@@ -26,15 +26,15 @@ class Contact extends Model
   public function addContact($user, $contact)
   {
     $stmt = $this->dbh->prepare("INSERT INTO " . $this->table . " VALUES('', ?, ?)");
-    $stmt->bindParam(1, $user['userID'], \PDO::FETCH_ASSOC);
-    $stmt->bindParam(2, $contact, \PDO::FETCH_ASSOC);
-    if ($stmt->execute())
-    {
-      $stmt = $this->dbh->prepare("INSERT INTO " . $this->table . " VALUES('', ?, ?)");
-      $stmt->bindParam(1, $contact, \PDO::FETCH_ASSOC);
-      $stmt->bindParam(2, $user['userID'], \PDO::FETCH_ASSOC);
-      return $stmt->execute();
-    } else return false;
+    $stmtD = $this->dbh->prepare("INSERT INTO " . $this->table . " VALUES('', ?, ?)");
+    $this->dbh->beginTransaction();
+    $stmt->bindParam(1, $user['userID'], \PDO::PARAM_INT);
+    $stmt->bindParam(2, $contact, \PDO::PARAM_INT);
+    $stmt->execute()
+    $stmtD->bindParam(1, $contact, \PDO::PARAM_INT);
+    $stmtD->bindParam(2, $user['userID'], \PDO::PARAM_INT);
+    $stmtD->execute();
+    return $this->dbh->commit();
   }
 
   /**
