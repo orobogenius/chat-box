@@ -31,12 +31,12 @@ ChatBox.Chat = function(user) {
 //Updates the a single chat view
 //This function can be called Periodically to update chats from other users
 ChatBox.Chat.prototype.updateChat = function() {
-    //Change the application's state to Updating
-    this.state = "updating";
-    //Check the state of the chatbox to see if chat can be updated
+     //Check the state of the chatbox to see if chat can be updated
      if (ChatBox.state == "no-chat") {
 	return;
      }
+    //Change the application's state to Updating
+    this.state = "updating";
     //Get updates
     $.ajax({
         data: {
