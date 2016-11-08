@@ -30,7 +30,7 @@ class Contact extends Model
     $this->dbh->beginTransaction();
     $stmt->bindParam(1, $user['userID'], \PDO::PARAM_INT);
     $stmt->bindParam(2, $contact, \PDO::PARAM_INT);
-    $stmt->execute()
+    $stmt->execute();
     $stmtD->bindParam(1, $contact, \PDO::PARAM_INT);
     $stmtD->bindParam(2, $user['userID'], \PDO::PARAM_INT);
     $stmtD->execute();
