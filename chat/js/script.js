@@ -33,6 +33,10 @@ ChatBox.Chat = function(user) {
 ChatBox.Chat.prototype.updateChat = function() {
     //Change the application's state to Updating
     this.state = "updating";
+    //Check the state of the chatbox to see if chat can be updated
+     if (ChatBox.state == "no-chat") {
+	return;
+     }
     //Get updates
     $.ajax({
         data: {
@@ -482,7 +486,7 @@ $(document).ready(function() {
     //Prepare Chat
     chat.init();
 
-    //Periodically upate chat
+    //Periodically upate chat when there's a current chat
     setInterval(chat.updateChat, 1000);
 
     $("#search").on('keypress', function(e) {
