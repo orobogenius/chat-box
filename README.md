@@ -13,5 +13,3 @@ This is a demo version (purely for educational purposes) and uses cookie to emul
 ## Languages
 - PHP
 - JavaScript
-
-If this helps you even a little bit, give it a star or two.
