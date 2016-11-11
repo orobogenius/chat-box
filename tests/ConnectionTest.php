@@ -17,7 +17,7 @@ class ConnectionTest Extends \PHPUnit_Framework_TestCase
 
   public function testConnect()
   {
-    $dbh = new Connection("localhost", "chatdb", "root", "this.mysql");
+    $dbh = new Connection("localhost", "chatdb", "root", "");
     $hn = $dbh->connect();
     //$this->assertInstanceOf(\PDO::class, $hn);
   }
